@@ -27,6 +27,8 @@ int main()
     pcg32 rng(seedSource);
     std::uniform_int_distribution<int> harvestDist(MIN_HARVEST, MAX_HARVEST);
     std::uniform_int_distribution<int> plagueDist(0, 100);
+    std::uniform_int_distribution<int> ratDist(0, 7);
+    std::uniform_int_distribution<int> priceDist(17, 26);
 
     int round = 1;
     
@@ -42,17 +44,19 @@ int main()
     int seed = 0;
     
     // events notifiers
-    int harvest = 0;
+    int price;
+    int harvest;
     int mortality = 0;
     int came = 0;
     bool plague = false;
     int harvestResult = 0;
+    int ratFood = 0;
     
     for(; round <= 10; round++)
     {
         cout << endl << "Round " << round << endl;
         harvest =  harvestDist(rng);
-        balance += harvestResult;   
+        price = priceDist(rng);
         
         if (mortality > 0)
         {
@@ -81,6 +85,12 @@ int main()
 
         cout << "HARVEST RESULT is " << harvestResult << endl;
         cout << "HARVEST " << harvest << endl;
+        
+        cout << "Rat food is " << ratFood << endl;
+        
+        cout << "Territory is " << territory << endl;
+        
+        cout << "Price is " << price << endl;
 
         
         
@@ -88,8 +98,12 @@ int main()
         mortality = deathProc(population, food);
         came = cameProc(mortality, harvest, balance);
         plague = plagueDist(rng) <= PLAGUE_ODD;
-        harvestResult = harvestProc(population, harvest, territory);
+        harvestResult = harvestProc(population, harvest, territory);        
+        balance += harvestResult;
+        ratFood = ratDist(rng)/100 * balance;
+        balance -= ratFood; 
 
+        
     }
     
     return 0;
