@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
-
 #include <random>
-#include "include/pcg_random.hpp"
 
 const int MAX_ROUND = 10;
 const int LIFE_PRICE = 20;
@@ -23,8 +21,9 @@ int main()
     using namespace std;
     
     //random config
-    pcg_extras::seed_seq_from<random_device> seedSource;
-    pcg32 rng(seedSource);
+    std::random_device rd;
+    std:mt19937 rng(rd());
+    
     std::uniform_int_distribution<int> harvestDist(MIN_HARVEST, MAX_HARVEST);
     std::uniform_int_distribution<int> plagueDist(0, 100);
     std::uniform_int_distribution<int> ratDist(0, 7);
@@ -91,9 +90,8 @@ int main()
         cout << "Territory is " << territory << endl;
         
         cout << "Price is " << price << endl;
-
         
-        
+        // TODO: buyInput(); с вводом-выводом и проверкой допустимости.
         
         mortality = deathProc(population, food);
         came = cameProc(mortality, harvest, balance);
