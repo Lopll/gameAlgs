@@ -9,6 +9,7 @@ const int MIN_HARVEST = 1;
 const int MAX_HARVEST = 6;
 const int PLAGUE_ODD = 15; // in %
 const int HUMAN_HARVESTING_POWER = 10;
+const int GAME_LENGTH = 10; // in rounds
 
 // returns amount of died people
 int deathProc(const int &population, const int &foodAmount);
@@ -58,7 +59,9 @@ int main()
     int harvestResult = 0;
     int ratFood = 0;
     
-    for(; round <= 10; round++)
+    int resultMortality = 0
+    
+    for(; round <= GAME_LENGTH; round++)
     {
         cout << endl << "Мой повелитель, соизволь поведать тебе.\nВ году " << round << " твоего высочайшего правления..." << endl;
         harvest =  harvestDist(rng);
@@ -68,6 +71,7 @@ int main()
         {
             cout << mortality << "человек умерли с голоду, ";
             population -= mortality;
+            resultMortality += mortality;
             balance -= population * LIFE_PRICE;
         }
         if(came > 0)
@@ -111,6 +115,25 @@ int main()
         balance -= ratFood; 
 
         
+    }
+    int mortalityGrade = resultMortality/GAME_LENGTH;
+    int territoryGrade = territory/population;
+    
+    if (mortalityGrade > 33 && territoryGrade < 7)
+    {
+        cout << "Из-за вашей некомпетентности в управлении, народ устроил бунт, и изгнал вас их города. Теперь вы вынуждены влачить жалкое существование в изгнании" << endl;
+    }
+    else if (mortalityGrade > 10 && territoryGrade < 9)
+    {
+        cout << "Вы правили железной рукой, подобно Нерону и Ивану Грозному. Народ вздохнул с облегчением, и никто больше не желает видеть вас правителем" << endl;
+    }
+    else if (mortalityGrade > 3 && territoryGrade < 10)
+    {
+        cout << "Вы справились вполне неплохо, у вас, конечно, есть недоброжелатели, но многие хотели бы увидеть вас во главе города снова" << endl;
+    }
+    else 
+    {
+        cout << "«Фантастика! Карл Великий, Дизраэли и Джефферсон вместе не справились бы лучше" << endl;
     }
     
     int a;
