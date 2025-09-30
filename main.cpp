@@ -40,7 +40,7 @@ int main()
     int round = 1;
     
     // stats
-    int population = 1000;
+    int population = 100;
     int balance = 2800;
     int territory = 1000;
 
@@ -59,7 +59,7 @@ int main()
     int harvestResult = 0;
     int ratFood = 0;
     
-    int resultMortality = 0
+    int resultMortality = 0;
     
     for(; round <= GAME_LENGTH; round++)
     {
@@ -69,7 +69,7 @@ int main()
         
         if (mortality > 0)
         {
-            cout << mortality << "человек умерли с голоду, ";
+            cout << mortality << " человек умерли с голоду, ";
             population -= mortality;
             resultMortality += mortality;
             balance -= population * LIFE_PRICE;
@@ -96,11 +96,9 @@ int main()
         cout << "1 акр земли стоит сейчас " << price << " бушелей." << endl;
         cout << "Что пожелаешь, повелитель?" << endl;
         // inputs
-        cout << "Сколько акров земли повелеваешь продать? ";
-        balance += transactionInput(price, balance);
+        balance -= transactionInput(-price, balance);
         
-        cout << "Сколько акров земли повелеваешь купить? ";
-        balance -= transactionInput(price, balance);
+        balance += transactionInput(price, balance);
         
         food = foodInput(balance);
         balance -= food;
@@ -180,8 +178,18 @@ int transactionInput(const int &price, const int &balance)
 {
     using namespace std;
     int desiredAcrs;
+    
+    if (price > 0)
+    {
+        cout << "Сколько акров земли повелеваешь купить? ";
+    }
+    else
+    {
+        cout << "Сколько акров земли повелеваешь продать? ";
+    }
+    
     while(true)
-    {         
+    {   
         if (!(cin >> desiredAcrs) || desiredAcrs < 0 || desiredAcrs * price > balance)
         {
             cin.clear();
@@ -198,7 +206,7 @@ int foodInput(const int &balance)
 {
     using namespace std;
     int result;
-    cout << "Сколько бушелей пшеницы повелеваешь съесть? " << endl;
+    cout << "Сколько бушелей пшеницы повелеваешь съесть? ";
     while(true)
     {         
         if (!(cin >> result) || result < 0 || result > balance)
@@ -219,7 +227,7 @@ int harvestInput(const int &balance, const int &population, const int &harvest, 
     using namespace std;
     int availableTerritory = population * HUMAN_HARVESTING_POWER;
     int desiredAcrs = 0;
-    cout << "Сколько акров земли повелеваешь засеять? " << endl;
+    cout << "Сколько акров земли повелеваешь засеять? ";
     while(true)
     {         
         if (!(cin >> desiredAcrs) || desiredAcrs < 0 || desiredAcrs > territory || 
