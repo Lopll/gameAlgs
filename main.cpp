@@ -18,12 +18,32 @@ int deathProc(const int &population, const int &foodAmount);
 int cameProc(const int &mortarity, const int &harvest, const int &balance);
 // return amount of harvested wheat
 int harvestProc(const int &population, const int &harvest, const int &territory);
-// returns value of potentinal transaction for user-defined acrs amount (with balance check)
-int transactionInput(const int &price, const int &balance);
+// returns user-defined acrs amount (with balance check)
+int transactionInput(const int &price, const int &balance, const int &territory);
 // returns amount of consumed food
 int foodInput(const int &balance);
 // returns user-defined amount of acrs for seeding
 int seedInput(const int &balance, const int &population, const int &territory);
+
+
+
+struct gameData
+{
+    // stats
+    int population = 100; // -s
+    int balance = 2800; // -s
+    int territory = 1000; // -s
+    // extra vals
+    int round = 1;
+    int price; // -s
+    int mortality = 0;
+    int resultMortality = 0;
+    int harvestResult = 0;
+    int harvest = 0;
+    int came = 0;
+    bool plague = false;
+    int ratFood = 0;
+};
 
 int main()
 {
@@ -37,7 +57,9 @@ int main()
     std::uniform_int_distribution<int> plagueDist(0, 100);
     std::uniform_int_distribution<int> ratDist(0, 7);
     std::uniform_int_distribution<int> priceDist(17, 26);
-
+    
+    struct gameData game;
+    
     int round = 1;
     
     // stats
@@ -46,18 +68,14 @@ int main()
     int territory = 1000;
 
     // player-decision amounts
-    int bought = 0;
-    int sell = 0;
     int food = 0;
-    int seed = 0;
     
-    // events notifiers
     int price;
     int harvest = 0;
     int mortality = 0;
     int came = 0;
     bool plague = false;
-    int seedArcs = 0;
+    int harvestResult = 0;
     int ratFood = 0;
     
     int resultMortality = 0;
@@ -66,7 +84,7 @@ int main()
     {
         cout << endl << "Мой повелитель, соизволь поведать тебе.\nВ году " << round << " твоего высочайшего правления..." << endl;
         price = priceDist(rng);
-        balance += seedArcs * harvest;
+        balance += harvestResult;
         
         if (mortality > 0)
         {
@@ -90,24 +108,31 @@ int main()
             cout << "Чума миновала наш великий город;" << endl;
         }
         cout << "Население города сейчас составляет " << population << " человек;" << endl;
-        cout << "Мы собрали " << seedArcs * harvest << " бушелей пшеницы, ";
+        cout << "Мы собрали " << harvestResult << " бушелей пшеницы, ";
         cout << "по " << harvest << " бушелей с акра;" << endl;
         cout << "Крысы истребили " << ratFood << " бушелей пшеницы, оставив " << balance << " бушелей в амбарах;" << endl;
         cout << "Город сейчас занимает " << territory << " акров;" << endl;
         cout << "1 акр земли стоит сейчас " << price << " бушелей." << endl;
         cout << "Что пожелаешь, повелитель?" << endl;
         // inputs
-        balance -= transactionInput(-price, balance); // TODO: apply transaction result on the territory
         
-        balance += transactionInput(price, balance);
+        // sell
+        int transactionResult = transactionInput(-price, balance, territory); 
+        territory -= transactionResult;
+        balance += transactionResult * price;
+        // buy
+        transactionResult = transactionInput(price, balance, territory);
+        territory += transactionResult;
+        balance -= transactionResult * price;
         
         food = foodInput(balance);
         balance -= food;
         
-        seedArcs = seedInput(balance, population, territory);
-        
         harvest =  harvestDist(rng);
-        ratFood = ratDist(rng)/100 * balance;
+        seedArcs = seedInput(balance, population, territory) * harvest;
+        
+        
+        ratFood = ((float) ratDist(rng)/100.0f) * balance;
         balance -= ratFood;
         mortality = deathProc(population, food);
         if (mortality/population >= 0.45)
@@ -119,6 +144,11 @@ int main()
         }
         came = cameProc(mortality, harvest, balance);
         plague = plagueDist(rng) <= PLAGUE_ODD;
+        
+        if (balance < 0)
+        {
+            balance = 0;
+        }
     }
     int mortalityGrade = resultMortality/GAME_LENGTH;
     int territoryGrade = territory/population;
@@ -180,7 +210,7 @@ int harvestProc(const int &population, const int &harvest, const int &territory)
     return result;
 }
 
-int transactionInput(const int &price, const int &balance)
+int transactionInput(const int &price, const int &balance, const int &territory)
 {
     using namespace std;
     int desiredAcrs;
@@ -196,16 +226,17 @@ int transactionInput(const int &price, const int &balance)
     
     while(true)
     {   
-        if (!(cin >> desiredAcrs) || desiredAcrs < 0 || desiredAcrs * price > balance)
+        if (!(cin >> desiredAcrs) || desiredAcrs < 0 || desiredAcrs * price > balance
+            || (price < 0 && desiredAcrs > territory))
         {
             cin.clear();
             cin.ignore(10000, '\n');
-            cout << "О, повелитель, пощади нас! У нас только " << balance << " бушелей пшеницы" << endl;
+            cout << "О, повелитель, пощади нас! У нас только " << balance << " бушелей пшеницы и " << territory << "акров земли" << endl;
             continue;
         }
         break;
     }
-    return desiredAcrs * price;
+    return desiredAcrs;
 }
 
 int foodInput(const int &balance)
@@ -241,7 +272,7 @@ int seedInput(const int &balance, const int &population, const int &territory)
         {
             cin.clear();
             cin.ignore(10000, '\n');
-            cout << "О, повелитель, пощади нас! У нас только " << population << " человек, " << balance << " бушелей пшеницы и " << territory << " акров земли!" << endl;
+            cout << "О, повелитель, пощади нас! У нас только " << population << " человек, " << balance << " бушелей пшеницы и " << territory << " акров земли" << endl;
             continue;
         }
         break;
