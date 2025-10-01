@@ -10,6 +10,7 @@ const int MAX_HARVEST = 6;
 const int PLAGUE_ODD = 15; // in %
 const int HUMAN_HARVESTING_POWER = 10;
 const int GAME_LENGTH = 10; // in rounds
+const float SEED_PRICE = 0.5;
 
 // returns amount of died people
 int deathProc(const int &population, const int &foodAmount);
@@ -21,8 +22,8 @@ int harvestProc(const int &population, const int &harvest, const int &territory)
 int transactionInput(const int &price, const int &balance);
 // returns amount of consumed food
 int foodInput(const int &balance);
-// returns needed wheat for harvesting user-defined amount of acrs
-int harvestInput(const int &balance, const int &population, const int &harvest, const int &territory);
+// returns user-defined amount of acrs for seeding
+int seedInput(const int &balance, const int &population, const int &territory);
 
 int main()
 {
@@ -52,11 +53,11 @@ int main()
     
     // events notifiers
     int price;
-    int harvest;
+    int harvest = 0;
     int mortality = 0;
     int came = 0;
     bool plague = false;
-    int harvestResult = 0;
+    int seedArcs = 0;
     int ratFood = 0;
     
     int resultMortality = 0;
@@ -64,8 +65,8 @@ int main()
     for(; round <= GAME_LENGTH; round++)
     {
         cout << endl << "Мой повелитель, соизволь поведать тебе.\nВ году " << round << " твоего высочайшего правления..." << endl;
-        harvest =  harvestDist(rng);
         price = priceDist(rng);
+        balance += seedArcs * harvest;
         
         if (mortality > 0)
         {
@@ -89,30 +90,35 @@ int main()
             cout << "Чума миновала наш великий город;" << endl;
         }
         cout << "Население города сейчас составляет " << population << " человек;" << endl;
-        cout << "Мы собрали " << harvestResult << " бушелей пшеницы, ";
+        cout << "Мы собрали " << seedArcs * harvest << " бушелей пшеницы, ";
         cout << "по " << harvest << " бушелей с акра;" << endl;
         cout << "Крысы истребили " << ratFood << " бушелей пшеницы, оставив " << balance << " бушелей в амбарах;" << endl;
         cout << "Город сейчас занимает " << territory << " акров;" << endl;
         cout << "1 акр земли стоит сейчас " << price << " бушелей." << endl;
         cout << "Что пожелаешь, повелитель?" << endl;
         // inputs
-        balance -= transactionInput(-price, balance);
+        balance -= transactionInput(-price, balance); // TODO: apply transaction result on the territory
         
         balance += transactionInput(price, balance);
         
         food = foodInput(balance);
         balance -= food;
         
-        harvestResult = harvestInput(balance, population, harvest, territory);
-        balance += harvestResult;
+        seedArcs = seedInput(balance, population, territory);
         
+        harvest =  harvestDist(rng);
+        ratFood = ratDist(rng)/100 * balance;
+        balance -= ratFood;
         mortality = deathProc(population, food);
+        if (mortality/population >= 0.45)
+        {
+            cout << "Мой повелитель, вы нас уничтожили...";
+            int a;
+            cin >> a;      
+            return 0;
+        }
         came = cameProc(mortality, harvest, balance);
         plague = plagueDist(rng) <= PLAGUE_ODD;
-        ratFood = ratDist(rng)/100 * balance;
-        balance -= ratFood; 
-
-        
     }
     int mortalityGrade = resultMortality/GAME_LENGTH;
     int territoryGrade = territory/population;
@@ -129,7 +135,7 @@ int main()
     {
         cout << "Вы справились вполне неплохо, у вас, конечно, есть недоброжелатели, но многие хотели бы увидеть вас во главе города снова" << endl;
     }
-    else 
+    else
     {
         cout << "«Фантастика! Карл Великий, Дизраэли и Джефферсон вместе не справились бы лучше" << endl;
     }
@@ -222,7 +228,7 @@ int foodInput(const int &balance)
     return result;
 }
 
-int harvestInput(const int &balance, const int &population, const int &harvest, const int &territory)
+int seedInput(const int &balance, const int &population, const int &territory)
 {
     using namespace std;
     int availableTerritory = population * HUMAN_HARVESTING_POWER;
@@ -231,7 +237,7 @@ int harvestInput(const int &balance, const int &population, const int &harvest, 
     while(true)
     {         
         if (!(cin >> desiredAcrs) || desiredAcrs < 0 || desiredAcrs > territory || 
-            desiredAcrs > availableTerritory || desiredAcrs * harvest > balance)
+            desiredAcrs > availableTerritory || desiredAcrs * SEED_PRICE > balance)
         {
             cin.clear();
             cin.ignore(10000, '\n');
@@ -241,5 +247,5 @@ int harvestInput(const int &balance, const int &population, const int &harvest, 
         break;
     }
     
-    return desiredAcrs * harvest;
+    return desiredAcrs;
 }
