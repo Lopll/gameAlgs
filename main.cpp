@@ -2,6 +2,7 @@
 #include <fstream>
 #include <random>
 #include <windows.h>
+#include <fstream>
 
 const int MAX_ROUND = 10;
 const int LIFE_PRICE = 20;
@@ -25,24 +26,33 @@ int foodInput(const int &balance);
 // returns user-defined amount of acrs for seeding
 int seedInput(const int &balance, const int &population, const int &territory);
 
-
-
 struct gameData
 {
     // stats
-    int population = 100; // -s
-    int balance = 2800; // -s
-    int territory = 1000; // -s
-    // extra vals
+    int population = 100;
+    int balance = 2800;
+    int territory = 1000;
+
     int round = 1;
-    int price; // -s
-    int mortality = 0;
     int resultMortality = 0;
-    int harvestResult = 0;
-    int harvest = 0;
-    int came = 0;
-    bool plague = false;
-    int ratFood = 0;
+    int desiredFood = 0;
+    int desiredHarvest = 300;
+    
+    void saveData()
+    {
+        std::ofstream file("saves.txt");
+        file.write(reinterpret_cast<char*>(this), sizeof(gameData));
+        file.close();
+    }
+    
+    void loadData()
+    {
+        std::ifstream file("saves.txt");
+        if(!file)
+            return;
+        file.read(reinterpret_cast<char*>(this), sizeof(gameData));
+        file.close();
+    }
 };
 
 int main()
@@ -52,7 +62,7 @@ int main()
     SetConsoleCP(65001);
     //random config
     std::random_device rd;
-    std:mt19937 rng(rd());
+    std::mt19937 rng(rd());
     std::uniform_int_distribution<int> harvestDist(MIN_HARVEST, MAX_HARVEST);
     std::uniform_int_distribution<int> plagueDist(0, 100);
     std::uniform_int_distribution<int> ratDist(0, 7);
@@ -60,98 +70,118 @@ int main()
     
     struct gameData game;
     
-    int round = 1;
-    
-    // stats
-    int population = 100;
-    int balance = 2800;
-    int territory = 1000;
-
-    // player-decision amounts
-    int food = 0;
-    
-    int price;
-    int harvest = 0;
-    int mortality = 0;
-    int came = 0;
-    bool plague = false;
-    int harvestResult = 0;
-    int ratFood = 0;
-    
-    int resultMortality = 0;
-    
-    for(; round <= GAME_LENGTH; round++)
+    ifstream saveFile("saves.txt");
+    if(saveFile)
     {
-        cout << endl << "Мой повелитель, соизволь поведать тебе.\nВ году " << round << " твоего высочайшего правления..." << endl;
-        price = priceDist(rng);
-        balance += harvestResult;
+        cout << "Желаете загрузить сохранённую игру? (y/n)" << endl;
+        char a;
+        cin >> a;
+        if (a == 'y')
+        {
+            game.loadData();
+        }
+    }
+    
+    for(; game.round <= GAME_LENGTH; game.round++)
+    {
+        // game logic
+        cout << endl <<  "Мой повелитель, соизволь поведать тебе.\nВ году " << game.round << " твоего высочайшего правления..." << endl;
         
+        int harvest = harvestDist(rng);
+        int price = priceDist(rng);
+        
+        int mortality = 0;
+        int came = 5;
+        bool plague = false;
+        int ratFood = 200;
+        
+        if(game.round > 1)
+        {
+            // continue?
+            cout << endl << "Мой повелитель, помни, что ты волен отдохнуть. Для этого скажи только \"q\"" << endl;
+            char q;
+            cin >> q;
+            if (q == 'q')
+            {
+                game.saveData();
+                system("pause");
+                return 0;
+            }
+        
+            mortality = deathProc(game.population, game.desiredFood);
+            came = cameProc(mortality, harvest, game.balance);
+            plague = plagueDist(rng) <= PLAGUE_ODD;
+            
+            ratFood = ((float) ratDist(rng)/100.0f) * game.balance;
+            game.balance -= ratFood;
+        }
+        
+        if (mortality/game.population >= 0.45)
+        {
+            cout << "Мой повелитель, вы нас уничтожили..." << endl;
+            system("pause");
+            return 0;
+        }
         if (mortality > 0)
         {
-            cout << mortality << " человек умерли с голоду, ";
-            population -= mortality;
-            resultMortality += mortality;
-            balance -= population * LIFE_PRICE;
+            cout << mortality << " человек умерли с голоду, и ";
+            game.population -= mortality;
+            game.resultMortality += mortality;
+            game.balance -= game.population * LIFE_PRICE;
         }
+        
         if(came > 0)
         {
             cout << came << " человек прибыли в наш великий город;" << endl;
-            population += came;
+            game.population += came;
         }
+        
         if (plague)
         {
             cout << "Чума уничтожила половину населения;" << endl;
-            population /= 2;
+            game.population /= 2;
         }
         else
         {
             cout << "Чума миновала наш великий город;" << endl;
         }
-        cout << "Население города сейчас составляет " << population << " человек;" << endl;
-        cout << "Мы собрали " << harvestResult << " бушелей пшеницы, ";
+        
+        cout << "Население города сейчас составляет " << game.population << " человек;" << endl;
+        
+        cout << "Мы собрали " << game.desiredHarvest << " бушелей пшеницы, ";
         cout << "по " << harvest << " бушелей с акра;" << endl;
-        cout << "Крысы истребили " << ratFood << " бушелей пшеницы, оставив " << balance << " бушелей в амбарах;" << endl;
-        cout << "Город сейчас занимает " << territory << " акров;" << endl;
+        
+        cout << "Крысы истребили " << ratFood << " бушелей пшеницы, оставив " << game.balance << " бушелей в амбарах;" << endl;
+        
+        
+        
+        cout << "Город сейчас занимает " << game.territory << " акров;" << endl;
         cout << "1 акр земли стоит сейчас " << price << " бушелей." << endl;
         cout << "Что пожелаешь, повелитель?" << endl;
-        // inputs
-        
+
+
         // sell
-        int transactionResult = transactionInput(-price, balance, territory); 
-        territory -= transactionResult;
-        balance += transactionResult * price;
+        int transactionResult = transactionInput(-price, game.balance, game.territory); 
+        game.territory -= transactionResult;
+        game.balance += transactionResult * price;
         // buy
-        transactionResult = transactionInput(price, balance, territory);
-        territory += transactionResult;
-        balance -= transactionResult * price;
+        transactionResult = transactionInput(price, game.balance, game.territory);
+        game.territory += transactionResult;
+        game.balance -= transactionResult * price;
         
-        food = foodInput(balance);
-        balance -= food;
+        game.desiredFood = foodInput(game.balance);
+        game.balance -= game.desiredFood;
         
-        harvest =  harvestDist(rng);
-        seedArcs = seedInput(balance, population, territory) * harvest;
+        game.desiredHarvest = seedInput(game.balance, game.population, game.territory) * harvest;
+        game.balance += game.desiredHarvest;
         
-        
-        ratFood = ((float) ratDist(rng)/100.0f) * balance;
-        balance -= ratFood;
-        mortality = deathProc(population, food);
-        if (mortality/population >= 0.45)
+        if (game.balance < 0)
         {
-            cout << "Мой повелитель, вы нас уничтожили...";
-            int a;
-            cin >> a;      
-            return 0;
-        }
-        came = cameProc(mortality, harvest, balance);
-        plague = plagueDist(rng) <= PLAGUE_ODD;
-        
-        if (balance < 0)
-        {
-            balance = 0;
+            game.balance = 0;
         }
     }
-    int mortalityGrade = resultMortality/GAME_LENGTH;
-    int territoryGrade = territory/population;
+    int mortalityGrade = game.resultMortality/GAME_LENGTH;
+    int territoryGrade = game.territory/game.population;
     
     if (mortalityGrade > 33 && territoryGrade < 7)
     {
@@ -170,8 +200,7 @@ int main()
         cout << "«Фантастика! Карл Великий, Дизраэли и Джефферсон вместе не справились бы лучше" << endl;
     }
     
-    int a;
-    cin >> a; 
+    system("pause");
     
     return 0;
 }
