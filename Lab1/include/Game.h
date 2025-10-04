@@ -27,5 +27,5 @@ char getValidatedChar(const std::string &text, std::function<bool (int)> validat
 // check for an existing save
 void saveChecker(GameData& game);
 bool askSave(GameData& game);
-void yearReport(GameData& game, RoundData& round);
+void yearResult(GameData& game, RoundData& round);
 void gameResults(GameData& game);

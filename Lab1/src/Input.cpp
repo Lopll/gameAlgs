@@ -36,18 +36,13 @@ int transactionInput(const GameData& game, const int& price)
 
 int foodInput(const GameData& game)
 {
-    using namespace std;
-    int result;
-    
-    getValidatedInt(game, "Сколько бушелей пшеницы повелеваешь съесть? ", [game](int v){ return v >= 0 && v <= game.balance;});
-    
-    return result;
+    return getValidatedInt(game, "Сколько бушелей пшеницы повелеваешь съесть? ", [game](int v){ return v >= 0 && v <= game.balance;});
 }
 
 int seedInput(const GameData& game)
 {
     int availableTerritory = game.population * HUMAN_HARVESTING_POWER;
 
-    int maxValue = std::max(std::max(availableTerritory, game.territory), (int) (game.balance/SEED_PRICE));
-    return getValidatedInt(game, "Сколько акров земли повелеваешь засеять? ", [maxValue](int v){ return v >= 0 && v < maxValue;});
+    int maxValue = std::min(std::min(availableTerritory, game.territory), (int) (game.balance/SEED_PRICE));
+    return getValidatedInt(game, "Сколько акров земли повелеваешь засеять? ", [maxValue](int v){ return v >= 0 && v <= maxValue;});
 }

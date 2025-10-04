@@ -40,7 +40,7 @@ void saveChecker(GameData& game)
     std::ifstream saveFile("saves.txt");
     if(saveFile)
     {
-        if (getValidatedChar("Желаете загрузить сохранённую игру? (y/n)", [](int v){ return v == 'y' or v == 'n';}) == 'y')
+        if (getValidatedChar("Желаете загрузить сохранённую игру? (y/n) ", [](int v){ return v == 'y' or v == 'n';}) == 'y')
         {
             game.loadData();
         }
@@ -49,7 +49,7 @@ void saveChecker(GameData& game)
 
 bool askSave(GameData& game)
 {
-    if (getValidatedChar("Мой повелитель, желаете продолжить правление? (y/n)", [](int v){ return v == 'y' or v == 'n';}) == 'n')
+    if (getValidatedChar("Желаете продолжить правление? (y/n) ", [](int v){ return v == 'y' or v == 'n';}) == 'n')
     {
         game.saveData();
         return true;
@@ -57,28 +57,23 @@ bool askSave(GameData& game)
     return false;
 }
 
-void yearReport(GameData& game, RoundData& round)
+void yearResult(GameData& game, RoundData& round)
 {
     using namespace std;
     
     if (round.mortality > 0)
     {
         cout << round.mortality << " человек умерли с голоду, и ";
-        game.population -= round.mortality;
-        game.resultMortality += round.mortality;
-        game.balance -= game.population * LIFE_PRICE;
     }
     
     if(round.came > 0)
     {
         cout << round.came << " человек прибыли в наш великий город;" << endl;
-        game.population += round.came;
     }
     
     if (round.plague)
     {
         cout << "Чума уничтожила половину населения;" << endl;
-        game.population /= 2;
     }
     else
     {
