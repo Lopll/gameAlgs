@@ -2,12 +2,14 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <utility>
+#include <type_traits>
 
 template <typename T>
 class Array final
 {   
-    // private:
-    public:
+    private:
+    // public:
     int capacity = 8;
     int length = 0;
     int* arr;
@@ -24,7 +26,7 @@ class Array final
     void increaseCap()
     {
         capacity *= 1.6;
-        // std::free(arr);
+        // std::free(arr); std::is_move_constructible_v<Ex1>
         // arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
     }
     
@@ -38,15 +40,26 @@ class Array final
     {
         arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
     }
+    
+    // copy constructor
     Array(Array& obj)
         : capacity(obj.capacity), length(obj.length)
     {
+        std::cout << "Copy Constructor activated" << std::endl;
         arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
         
         for(int i = 0; i < length; i++)
         {
             arr[i] = T(obj.arr[i]);
         }
+    }
+    // move constructor
+    Array(Array&& obj) noexcept
+    {
+        arr = std::exchange(obj.arr, nullptr);
+        std::cout << "Move Constructor activated" << std::endl;
+        // this = obj;
+        // obj = nullptr;
     }
     
     ~Array()
@@ -70,8 +83,9 @@ class Array final
         length++;
         if (length > capacity)
         {
-            increaseCap();
+            // increaseCap();
         }
+        return 0;
     }
     int insert(int index, const T& value);
     
@@ -86,5 +100,15 @@ class Array final
     const T& operator[](int index) const;
     T& operator[](int index);
     
-    T& operator=(T& obj);
+    // copy assigment
+    T& operator=(T& obj)
+    {
+        
+    }
+    // move assigment
+    T& operator=(T&& obj) noexcept
+    {
+        std::cout << "Move Assignment activated" << std::endl;
+        std::swap(arr, obj.arr);
+    }
 };
