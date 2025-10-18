@@ -1,3 +1,6 @@
+// TODO: 
+//  1.check constructors and assignment operators for mistaces with help of 10.11 lecture.
+//  2. Remove()
 #pragma once
 
 #include <cstdlib>
@@ -9,36 +12,108 @@ template <typename T>
 class Array final
 {   
     private:
-    // public:
     int capacity = 8;
     int length = 0;
     T* arr;
     
-    // class Iterator
-    // {
-    //     const T& get() const;
-    //     void set(const T& value);
-    //     void next();
-    //     bool hasNext() const;
-    // };
+    class Iterator
+    {
+        private:
+        Array<T>& parent;
+        int index;
+        
+        public:
+        Iterator(Array<T>& p, int i) : parent(p), index(i){}
+        const T& get() const
+        {
+            return parent.arr[index];
+        }
+        void set(const T& value)
+        {
+            if constexpr(std::is_move_constructible_v<T>)
+            {
+                parent.arr[index] = std::move(value);
+            }
+            else
+            {
+                parent.arr[index] = value;
+            }
+        }
+        void next()
+        {
+            index++;
+        }
+        void prev()
+        {
+            index--;
+        }
+        bool hasNext() const
+        {
+            return index+1 <= parent.length;
+        }
+        bool hasPrev() const
+        {
+            return index-1 >= 0;
+        }
+    };
+    class ConstIterator
+    {
+        private:
+        Array<T>& parent;
+        int index;
+        
+        public:
+        ConstIterator(Array<T>& p, int i) : parent(p), index(i){}
+        const T& get() const
+        {
+            return parent.arr[index];
+        }
+        void next()
+        {
+            index++;
+        }
+        void prev()
+        {
+            index--;
+        }
+        bool hasNext() const
+        {
+            return index+1 <= parent.length;
+        }
+        bool hasPrev() const
+        {
+            return index-1 >= 0;
+        }
+    };
     
-    // increases capacity and reallocates memory for arr
+    // increases capacity
     void increaseCap()
     {
-        // capacity *= 1.6;
-        // std::free(arr); std::is_move_constructible_v<Ex1>
-        // arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
+        Array<T> temp = std::move(*this);
+        capacity = temp.capacity * 1.6;
+        length = temp.length;
+        arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
+
+        Iterator iter = iterator();
+        Iterator tIter = temp.iterator();
+        while(iter.hasNext())
+        {   
+            iter.set(tIter.get());
+            iter.next();
+            tIter.next();
+        }
+        std::cout << "Increased capacity from " << temp.capacity << " to " << capacity << std::endl;
     }
     
     public:
     Array()
     {
-        arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
+        arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
     }
     Array(int cap)
         : capacity(cap)
     {
-        arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
+        arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
     }
     
     // copy constructor
@@ -46,7 +121,7 @@ class Array final
         : capacity(obj.capacity), length(obj.length)
     {
         std::cout << "Copy Constructor activated" << std::endl;
-        arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
+        arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
         
         for(int i = 0; i < length; i++)
         {
@@ -72,63 +147,101 @@ class Array final
         }
     }
     
-    inline int size() const
+    // copy and swap assigment
+    Array& operator=(Array obj) noexcept
     {
-        return length;
-    }
-    
-    
-    // insert at the end of arr
-    int insert(const T& value)
-    {
-        length++;
-        if (length > capacity)
+        if (this != obj)
         {
-            // increaseCap();
-        }
-        return 0;
-    }
-    int insert(int index, const T& value);
-    
-    void remove(int index);
-    
-    // Iterator iterator();
-    // ConstIterator iterator() const;
-    
-    // Iterator reverseIterator();
-    // ConstIterator reverseIterator() const;
-    
-    const T& operator[](int index) const;
-    T& operator[](int index);
-    
-    // copy assigment
-    Array& operator=(const Array& obj)
-    {
-        if (this != &obj)
-        {
-            std::cout << "Copy Assignment activated" << std::endl;
-            capacity = obj.capacity;
-            length = obj.length;
-            
-            std::free(arr);
-            arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));     
-            for(int i = 0; i < length; i++)
-            {
-                arr[i] = obj.arr[i];
-            }
-        }
-        return *this;
-    }
-    // move assigment
-    Array& operator=(Array&& obj) noexcept
-    {
-        if (this != &obj)
-        {
-            std::cout << "Move Assignment activated" << std::endl;
+            std::cout << "Copy-and-Swap Assignment activated" << std::endl;
             std::swap(capacity, obj.capacity);
             std::swap(length, obj.length);
             std::swap(arr, obj.arr);
         }
         return *this;
     }
+    
+    const T& operator[](int index) const
+    {
+        return arr[index];
+    }
+    T& operator[](int index)
+    {
+        return arr[index];
+    }
+    
+    inline int size() const
+    {
+        return length;
+    }
+    
+    // insert at the end of arr
+    int insert(const T& value)
+    {
+        if (length+1 >= capacity)
+        {
+            increaseCap();
+        }
+        
+        arr[length] = value;
+        length++;
+        return length-1;
+    }
+    
+    int insert(int index, const T& value)
+    {
+        if (length+1 >= capacity)
+        {
+            increaseCap();
+        }
+        length++;
+        
+        Iterator iter = reverseIterator();
+        Iterator tIter = reverseIterator();
+        tIter.prev();
+        for(int i = length; i > index; i--, iter.prev(), tIter.prev())
+        {
+            iter.set(tIter.get());
+        }
+        // insert
+        iter.set(value);
+        return index;
+    }
+    
+    void remove(int index);
+    
+    Iterator iterator()
+    {
+        return Iterator(*this, 0);
+    }
+    ConstIterator iterator() const
+    {
+        return ConstIterator(*this, 0);
+    }
+    
+    Iterator reverseIterator()
+    {
+        return Iterator(*this, length);
+    }
+    ConstIterator reverseIterator() const
+    {
+        return ConstIterator(*this, length);
+    }
+    
+    void print()
+    {
+        
+        std::cout << "\n----------\nCapacity: " << capacity<< std::endl << "Length: " << length << std::endl << "Arr: " << arr << std::endl;
+        std::cout << "{ ";
+        
+        for(int i = 0; i < std::min(length, capacity); i++)
+        {
+            std::cout << arr[i] << " ";
+        }
+        
+        std::cout << "}\n----------" << std::endl;
+    }
 };
+
+
+
+// NOTES: no direct set() for ConstIterator
