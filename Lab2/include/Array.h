@@ -12,7 +12,7 @@ class Array final
     // public:
     int capacity = 8;
     int length = 0;
-    int* arr;
+    T* arr;
     
     // class Iterator
     // {
@@ -25,7 +25,7 @@ class Array final
     // increases capacity and reallocates memory for arr
     void increaseCap()
     {
-        capacity *= 1.6;
+        // capacity *= 1.6;
         // std::free(arr); std::is_move_constructible_v<Ex1>
         // arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));
     }
@@ -42,7 +42,7 @@ class Array final
     }
     
     // copy constructor
-    Array(Array& obj)
+    Array(const Array& obj)
         : capacity(obj.capacity), length(obj.length)
     {
         std::cout << "Copy Constructor activated" << std::endl;
@@ -50,25 +50,26 @@ class Array final
         
         for(int i = 0; i < length; i++)
         {
-            arr[i] = T(obj.arr[i]);
+            arr[i] = obj.arr[i];
         }
     }
     // move constructor
     Array(Array&& obj) noexcept
+        : capacity(std::exchange(obj.capacity, 0)), length(std::exchange(obj.length, 0)), arr(std::exchange(obj.arr, nullptr))
     {
-        arr = std::exchange(obj.arr, nullptr);
         std::cout << "Move Constructor activated" << std::endl;
-        // this = obj;
-        // obj = nullptr;
     }
     
     ~Array()
     {
-        for(int i = 0; i < length; i++)
+        if (arr != nullptr)
         {
-            arr[i].~T();
+            for(int i = 0; i < length; i++)
+            {
+                arr[i].~T();
+            }
+            std::free(arr);
         }
-        std::free(arr);
     }
     
     inline int size() const
@@ -101,14 +102,33 @@ class Array final
     T& operator[](int index);
     
     // copy assigment
-    T& operator=(T& obj)
+    Array& operator=(const Array& obj)
     {
-        
+        if (this != &obj)
+        {
+            std::cout << "Copy Assignment activated" << std::endl;
+            capacity = obj.capacity;
+            length = obj.length;
+            
+            std::free(arr);
+            arr = static_cast<int*>(std::malloc(sizeof(T) * capacity));     
+            for(int i = 0; i < length; i++)
+            {
+                arr[i] = obj.arr[i];
+            }
+        }
+        return *this;
     }
     // move assigment
-    T& operator=(T&& obj) noexcept
+    Array& operator=(Array&& obj) noexcept
     {
-        std::cout << "Move Assignment activated" << std::endl;
-        std::swap(arr, obj.arr);
+        if (this != &obj)
+        {
+            std::cout << "Move Assignment activated" << std::endl;
+            std::swap(capacity, obj.capacity);
+            std::swap(length, obj.length);
+            std::swap(arr, obj.arr);
+        }
+        return *this;
     }
 };
