@@ -1,6 +1,3 @@
-// TODO: 
-//  1.check constructors and assignment operators for mistaces with help of 10.11 lecture.
-//  2. Remove()
 #pragma once
 
 #include <cstdlib>
@@ -207,7 +204,24 @@ class Array final
         return index;
     }
     
-    void remove(int index);
+    void remove(int index)
+    {
+        Iterator iter = iterator();
+        Iterator nIter = iterator();
+        nIter.next();
+        while(nIter.hasNext() && iter.get() != arr[index])
+        {
+            iter.next();
+            nIter.next();
+        }
+        while(iter.hasNext())
+        {
+            iter.set(nIter.get());
+            iter.next();
+            nIter.next();
+        }
+        length--;
+    }
     
     Iterator iterator()
     {
@@ -241,7 +255,3 @@ class Array final
         std::cout << "}\n----------" << std::endl;
     }
 };
-
-
-
-// NOTES: no direct set() for ConstIterator
