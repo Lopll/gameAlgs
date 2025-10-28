@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/cmake_install.cmake",
+		"E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/googletest/cmake_install.cmake",
+		"E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/googletest/googlemock/cmake_install.cmake",
+		"E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/googletest/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -29,11 +29,11 @@ class Array final
         {
             if constexpr(std::is_move_constructible_v<T>)
             {
-                parent.arr[index] = std::move(value);
+                new(&parent.arr[index]) T(std::move(value));
             }
             else
             {
-                parent.arr[index] = value;
+                new(&parent.arr[index]) T(value);
             }
         }
         void next()
@@ -86,6 +86,7 @@ class Array final
     // increases capacity
     void increaseCap()
     {
+        std::cout << "Increasing capacity" << std::endl;
         Array<T> temp = std::move(*this);
         capacity = temp.capacity * 1.6;
         length = temp.length;
@@ -122,7 +123,8 @@ class Array final
         
         for(int i = 0; i < length; i++)
         {
-            arr[i] = obj.arr[i];
+            // arr[i] = obj.arr[i];
+            new(&arr[i]) T(obj.arr[i]);
         }
     }
     // move constructor
@@ -170,6 +172,14 @@ class Array final
     {
         return length;
     }
+    inline int getCapacity() const
+    {
+        return capacity;
+    }
+    inline T* getArr() const
+    {
+        return arr;
+    }
     
     // insert at the end of arr
     int insert(const T& value)
@@ -179,7 +189,7 @@ class Array final
             increaseCap();
         }
         
-        arr[length] = value;
+        new(&arr[length]) T(value);
         length++;
         return length-1;
     }

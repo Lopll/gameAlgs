@@ -1,18 +1,19 @@
 #include "include/Array.h"
 #include <iostream>
+#include <string>
 
 int main()
 {
     using namespace std;
     
-    Array<int> a;
-    
-    // for (int i = 0; i < 10; ++i)
-    //     a.insert(i + 1);
+    Array<string> a;
+    for (int i = 0; i < 9; ++i)
+        a.insert(to_string(i + 1));
+    a.print();
     // for (int i = 0; i < a.size(); ++i)
-    //     a[i] *= 2;
+        // a[i] *= 2;
     // for (auto it = a.iterator(); it.hasNext(); it.next())
-    //     std::cout << it.get() << std::endl;
+        // std::cout << it.get() << std::endl;
         
     return 0;
 }

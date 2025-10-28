@@ -1,0 +1,5 @@
+if(EXISTS "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest[1]_tests.cmake")
+  include("E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest[1]_tests.cmake")
+else()
+  add_test(gTest_NOT_BUILT gTest_NOT_BUILT)
+endif()

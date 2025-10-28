@@ -1,0 +1,13 @@
+# ninja log v7
+27	1053	7833622379101688	googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	f604e686dfa8a13f
+30	1504	7833622379131926	CMakeFiles/gTest.dir/gTest.cpp.obj	d0400d92af70ef48
+33	1320	7833622379155716	googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj	1a6d1b126ac41dc9
+25	2525	7833622379079845	googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj	9875342fbda95c50
+22	6894	7833622379054246	googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	397d1781557d034d
+6894	7025	7833622447762002	lib/libgtest.a	5fd528016266d4b0
+7030	7093	7833622449126047	lib/libgtest_main.a	6d58c4af7534bc24
+7025	7111	7833622449075492	lib/libgmock.a	38f4cb332aa9117a
+7111	7173	7833622449943135	lib/libgmock_main.a	289398b600eddc22
+7093	7618	7833622454947229	gTest.exe	205d0f828045ffdd
+7093	7618	7833622454947229	gTest[1]_tests.cmake	205d0f828045ffdd
+7093	7618	7833622454947229	E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest[1]_tests.cmake	205d0f828045ffdd

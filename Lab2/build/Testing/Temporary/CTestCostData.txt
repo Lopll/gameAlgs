@@ -1,0 +1,16 @@
+ConstructorTest.DefaultConstructor 5 0.00223758
+ConstructorTest.IntParamConstructor 4 0.00278013
+InsertTest.EndIntInsert 4 0.00190933
+InsertTest.EndInsertMoreThanMaxCapacity 4 0.00138058
+InsertTest.EndStringInsert 4 0.00140202
+InsertTest.EndStringInsertMoreThanMaxCapacity 4 0.0014543
+CopyTest.MoveConstructorWithEmpty 4 0.00144003
+CopyTest.MoveConstructorInt 4 0.00142962
+CopyTest.MoveConstructorString 4 0.00136718
+CopyTest.CopyConstructorWithEmpty 4 0.00139165
+CopyTest.CopyConstructorInt 4 0.00140212
+CopyTest.CopyConstructorString 4 0.00142213
+DestructionTest.MemoryLeakTest 1 0.0061043
+MemoryLeakTest.NoMemoryLeak 3 0.00373663
+MemoryLeakTest.MemoryLeak 3 0.00378247
+---
