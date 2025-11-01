@@ -1,0 +1,8 @@
+7:InsertTest.InsertAfterRemoveString
+10:CopyTest.MoveConstructorString
+13:CopyTest.CopyConstructorString
+14:AssigmentTest.MoveCopyAssigment
+16:SubscriptOperatorTest.ReturnNonConstString
+18:SubscriptOperatorTest.ReturnConstString
+20:RemoveTest.RemoveString
+21:RemoveTest.RemoveStringMiddle

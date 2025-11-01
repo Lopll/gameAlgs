@@ -13,76 +13,6 @@ class Array final
     int length = 0;
     T* arr;
     
-    class Iterator
-    {
-        private:
-        Array<T>& parent;
-        int index;
-        
-        public:
-        Iterator(Array<T>& p, int i) : parent(p), index(i){}
-        const T& get() const
-        {
-            return parent.arr[index];
-        }
-        void set(const T& value)
-        {
-            if constexpr(std::is_move_constructible_v<T>)
-            {
-                new(&parent.arr[index]) T(std::move(value));
-            }
-            else
-            {
-                new(&parent.arr[index]) T(value);
-            }
-        }
-        void next()
-        {
-            index++;
-        }
-        void prev()
-        {
-            index--;
-        }
-        bool hasNext() const
-        {
-            return index+1 <= parent.length;
-        }
-        bool hasPrev() const
-        {
-            return index-1 >= 0;
-        }
-    };
-    class ConstIterator
-    {
-        private:
-        Array<T>& parent;
-        int index;
-        
-        public:
-        ConstIterator(Array<T>& p, int i) : parent(p), index(i){}
-        const T& get() const
-        {
-            return parent.arr[index];
-        }
-        void next()
-        {
-            index++;
-        }
-        void prev()
-        {
-            index--;
-        }
-        bool hasNext() const
-        {
-            return index+1 <= parent.length;
-        }
-        bool hasPrev() const
-        {
-            return index-1 >= 0;
-        }
-    };
-    
     // increases capacity
     void increaseCap()
     {
@@ -100,6 +30,7 @@ class Array final
             iter.next();
             tIter.next();
         }
+        iter.set(tIter.get());
         std::cout << "Increased capacity from " << temp.capacity << " to " << capacity << std::endl;
     }
     
@@ -136,6 +67,7 @@ class Array final
     
     ~Array()
     {
+        std::cout<<"Destructor\n";
         if (arr != nullptr)
         {
             for(int i = 0; i < length; i++)
@@ -216,6 +148,8 @@ class Array final
     
     void remove(int index)
     {
+        if(length == 0)
+            return;
         Iterator iter = iterator();
         Iterator nIter = iterator();
         nIter.next();
@@ -224,31 +158,14 @@ class Array final
             iter.next();
             nIter.next();
         }
-        while(iter.hasNext())
+        while(nIter.hasNext())
         {
             iter.set(nIter.get());
             iter.next();
             nIter.next();
         }
+        iter.set(T());
         length--;
-    }
-    
-    Iterator iterator()
-    {
-        return Iterator(*this, 0);
-    }
-    ConstIterator iterator() const
-    {
-        return ConstIterator(*this, 0);
-    }
-    
-    Iterator reverseIterator()
-    {
-        return Iterator(*this, length);
-    }
-    ConstIterator reverseIterator() const
-    {
-        return ConstIterator(*this, length);
     }
     
     void print()
@@ -263,5 +180,94 @@ class Array final
         }
         
         std::cout << "}\n----------" << std::endl;
+    }
+    
+    
+    class Iterator
+    {
+        private:
+        Array<T>& parent;
+        int index;
+        
+        public:
+        Iterator(Array<T>& p, int i) : parent(p), index(i){}
+        const T& get() const
+        {
+            return parent.arr[index];
+        }
+        void set(const T& value)
+        {
+            if constexpr(std::is_move_constructible_v<T>)
+            {
+                new(&parent.arr[index]) T(std::move(value));
+            }
+            else
+            {
+                new(&parent.arr[index]) T(value);
+            }
+        }
+        void next()
+        {
+            index++;
+        }
+        void prev()
+        {
+            index--;
+        }
+        bool hasNext() const
+        {
+            return index+1 < parent.length;
+        }
+        bool hasPrev() const
+        {
+            return index-1 >= 0;
+        }
+    };
+    class ConstIterator
+    {
+        private:
+        const Array<T>& parent;
+        int index;
+        
+        public:
+        ConstIterator(const Array<T>& p, int i) : parent(p), index(i){}
+        const T& get() const
+        {
+            return parent.arr[index];
+        }
+        void next()
+        {
+            index++;
+        }
+        void prev()
+        {
+            index--;
+        }
+        bool hasNext() const
+        {
+            return index+1 < parent.length;
+        }
+        bool hasPrev() const
+        {
+            return index-1 >= 0;
+        }
+    };
+    
+    Iterator iterator()
+    {
+        return Iterator(*this, 0);
+    }
+    ConstIterator iterator() const
+    {
+        return ConstIterator(*this, 0);
+    }
+    
+    Iterator reverseIterator()
+    {
+        return Iterator(*this, length-1);
+    }
+    ConstIterator reverseIterator() const
+    {
+        return ConstIterator(*this, length-1);
     }
 };
