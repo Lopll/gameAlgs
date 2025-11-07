@@ -1,10 +1,10 @@
-Start testing: Nov 01 13:03 RTZ 2 (çèìà)
+Start testing: Nov 04 16:48 RTZ 2 (çèìà)
 ----------------------------------------------------------
 1/25 Testing: ConstructorTest.DefaultConstructor
 1/25 Test: ConstructorTest.DefaultConstructor
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=ConstructorTest.DefaultConstructor" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"ConstructorTest.DefaultConstructor" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"ConstructorTest.DefaultConstructor" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -13,7 +13,6 @@ Note: Google Test filter = ConstructorTest.DefaultConstructor
 [----------] Global test environment set-up.
 [----------] 1 test from ConstructorTest
 [ RUN      ] ConstructorTest.DefaultConstructor
-Destructor
 [       OK ] ConstructorTest.DefaultConstructor (0 ms)
 [----------] 1 test from ConstructorTest (0 ms total)
 
@@ -24,7 +23,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"ConstructorTest.DefaultConstructor" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"ConstructorTest.DefaultConstructor" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "ConstructorTest.DefaultConstructor" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -32,7 +31,7 @@ Test Passed.
 2/25 Test: ConstructorTest.IntParamConstructor
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=ConstructorTest.IntParamConstructor" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"ConstructorTest.IntParamConstructor" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"ConstructorTest.IntParamConstructor" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -41,7 +40,6 @@ Note: Google Test filter = ConstructorTest.IntParamConstructor
 [----------] Global test environment set-up.
 [----------] 1 test from ConstructorTest
 [ RUN      ] ConstructorTest.IntParamConstructor
-Destructor
 [       OK ] ConstructorTest.IntParamConstructor (0 ms)
 [----------] 1 test from ConstructorTest (0 ms total)
 
@@ -52,7 +50,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"ConstructorTest.IntParamConstructor" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"ConstructorTest.IntParamConstructor" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "ConstructorTest.IntParamConstructor" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -60,7 +58,7 @@ Test Passed.
 3/25 Test: InsertTest.EndIntInsert
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=InsertTest.EndIntInsert" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"InsertTest.EndIntInsert" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndIntInsert" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -69,7 +67,6 @@ Note: Google Test filter = InsertTest.EndIntInsert
 [----------] Global test environment set-up.
 [----------] 1 test from InsertTest
 [ RUN      ] InsertTest.EndIntInsert
-Destructor
 [       OK ] InsertTest.EndIntInsert (0 ms)
 [----------] 1 test from InsertTest (0 ms total)
 
@@ -80,7 +77,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"InsertTest.EndIntInsert" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndIntInsert" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "InsertTest.EndIntInsert" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -88,7 +85,7 @@ Test Passed.
 4/25 Test: InsertTest.EndInsertMoreThanMaxCapacity
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=InsertTest.EndInsertMoreThanMaxCapacity" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"InsertTest.EndInsertMoreThanMaxCapacity" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndInsertMoreThanMaxCapacity" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -97,11 +94,6 @@ Note: Google Test filter = InsertTest.EndInsertMoreThanMaxCapacity
 [----------] Global test environment set-up.
 [----------] 1 test from InsertTest
 [ RUN      ] InsertTest.EndInsertMoreThanMaxCapacity
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] InsertTest.EndInsertMoreThanMaxCapacity (0 ms)
 [----------] 1 test from InsertTest (0 ms total)
 
@@ -112,7 +104,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"InsertTest.EndInsertMoreThanMaxCapacity" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndInsertMoreThanMaxCapacity" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "InsertTest.EndInsertMoreThanMaxCapacity" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -120,7 +112,7 @@ Test Passed.
 5/25 Test: InsertTest.EndStringInsert
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=InsertTest.EndStringInsert" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"InsertTest.EndStringInsert" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndStringInsert" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -129,7 +121,6 @@ Note: Google Test filter = InsertTest.EndStringInsert
 [----------] Global test environment set-up.
 [----------] 1 test from InsertTest
 [ RUN      ] InsertTest.EndStringInsert
-Destructor
 [       OK ] InsertTest.EndStringInsert (0 ms)
 [----------] 1 test from InsertTest (0 ms total)
 
@@ -140,7 +131,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"InsertTest.EndStringInsert" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndStringInsert" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "InsertTest.EndStringInsert" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -148,7 +139,7 @@ Test Passed.
 6/25 Test: InsertTest.EndStringInsertMoreThanMaxCapacity
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=InsertTest.EndStringInsertMoreThanMaxCapacity" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"InsertTest.EndStringInsertMoreThanMaxCapacity" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndStringInsertMoreThanMaxCapacity" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -157,11 +148,6 @@ Note: Google Test filter = InsertTest.EndStringInsertMoreThanMaxCapacity
 [----------] Global test environment set-up.
 [----------] 1 test from InsertTest
 [ RUN      ] InsertTest.EndStringInsertMoreThanMaxCapacity
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] InsertTest.EndStringInsertMoreThanMaxCapacity (0 ms)
 [----------] 1 test from InsertTest (0 ms total)
 
@@ -172,7 +158,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"InsertTest.EndStringInsertMoreThanMaxCapacity" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.EndStringInsertMoreThanMaxCapacity" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "InsertTest.EndStringInsertMoreThanMaxCapacity" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -180,7 +166,7 @@ Test Passed.
 7/25 Test: InsertTest.InsertAfterRemoveString
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=InsertTest.InsertAfterRemoveString" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"InsertTest.InsertAfterRemoveString" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.InsertAfterRemoveString" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -189,15 +175,6 @@ Note: Google Test filter = InsertTest.InsertAfterRemoveString
 [----------] Global test environment set-up.
 [----------] 1 test from InsertTest
 [ RUN      ] InsertTest.InsertAfterRemoveString
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] InsertTest.InsertAfterRemoveString (0 ms)
 [----------] 1 test from InsertTest (0 ms total)
 
@@ -208,7 +185,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"InsertTest.InsertAfterRemoveString" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"InsertTest.InsertAfterRemoveString" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "InsertTest.InsertAfterRemoveString" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -216,7 +193,7 @@ Test Passed.
 8/25 Test: CopyTest.MoveConstructorWithEmpty
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=CopyTest.MoveConstructorWithEmpty" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"CopyTest.MoveConstructorWithEmpty" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.MoveConstructorWithEmpty" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -225,9 +202,6 @@ Note: Google Test filter = CopyTest.MoveConstructorWithEmpty
 [----------] Global test environment set-up.
 [----------] 1 test from CopyTest
 [ RUN      ] CopyTest.MoveConstructorWithEmpty
-Move Constructor activated
-Destructor
-Destructor
 [       OK ] CopyTest.MoveConstructorWithEmpty (0 ms)
 [----------] 1 test from CopyTest (0 ms total)
 
@@ -238,7 +212,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"CopyTest.MoveConstructorWithEmpty" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.MoveConstructorWithEmpty" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "CopyTest.MoveConstructorWithEmpty" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -246,7 +220,7 @@ Test Passed.
 9/25 Test: CopyTest.MoveConstructorInt
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=CopyTest.MoveConstructorInt" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"CopyTest.MoveConstructorInt" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.MoveConstructorInt" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -255,17 +229,6 @@ Note: Google Test filter = CopyTest.MoveConstructorInt
 [----------] Global test environment set-up.
 [----------] 1 test from CopyTest
 [ RUN      ] CopyTest.MoveConstructorInt
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Move Constructor activated
-Destructor
-Destructor
 [       OK ] CopyTest.MoveConstructorInt (0 ms)
 [----------] 1 test from CopyTest (0 ms total)
 
@@ -276,7 +239,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"CopyTest.MoveConstructorInt" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.MoveConstructorInt" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "CopyTest.MoveConstructorInt" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -284,7 +247,7 @@ Test Passed.
 10/25 Test: CopyTest.MoveConstructorString
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=CopyTest.MoveConstructorString" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"CopyTest.MoveConstructorString" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.MoveConstructorString" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -293,17 +256,6 @@ Note: Google Test filter = CopyTest.MoveConstructorString
 [----------] Global test environment set-up.
 [----------] 1 test from CopyTest
 [ RUN      ] CopyTest.MoveConstructorString
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Move Constructor activated
-Destructor
-Destructor
 [       OK ] CopyTest.MoveConstructorString (0 ms)
 [----------] 1 test from CopyTest (0 ms total)
 
@@ -314,7 +266,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"CopyTest.MoveConstructorString" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.MoveConstructorString" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "CopyTest.MoveConstructorString" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -322,7 +274,7 @@ Test Passed.
 11/25 Test: CopyTest.CopyConstructorWithEmpty
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=CopyTest.CopyConstructorWithEmpty" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"CopyTest.CopyConstructorWithEmpty" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.CopyConstructorWithEmpty" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -331,9 +283,6 @@ Note: Google Test filter = CopyTest.CopyConstructorWithEmpty
 [----------] Global test environment set-up.
 [----------] 1 test from CopyTest
 [ RUN      ] CopyTest.CopyConstructorWithEmpty
-Copy Constructor activated
-Destructor
-Destructor
 [       OK ] CopyTest.CopyConstructorWithEmpty (0 ms)
 [----------] 1 test from CopyTest (0 ms total)
 
@@ -344,7 +293,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"CopyTest.CopyConstructorWithEmpty" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.CopyConstructorWithEmpty" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "CopyTest.CopyConstructorWithEmpty" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -352,7 +301,7 @@ Test Passed.
 12/25 Test: CopyTest.CopyConstructorInt
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=CopyTest.CopyConstructorInt" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"CopyTest.CopyConstructorInt" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.CopyConstructorInt" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -361,17 +310,6 @@ Note: Google Test filter = CopyTest.CopyConstructorInt
 [----------] Global test environment set-up.
 [----------] 1 test from CopyTest
 [ RUN      ] CopyTest.CopyConstructorInt
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Copy Constructor activated
-Destructor
-Destructor
 [       OK ] CopyTest.CopyConstructorInt (0 ms)
 [----------] 1 test from CopyTest (0 ms total)
 
@@ -382,7 +320,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"CopyTest.CopyConstructorInt" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.CopyConstructorInt" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "CopyTest.CopyConstructorInt" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -390,7 +328,7 @@ Test Passed.
 13/25 Test: CopyTest.CopyConstructorString
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=CopyTest.CopyConstructorString" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"CopyTest.CopyConstructorString" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.CopyConstructorString" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -399,17 +337,6 @@ Note: Google Test filter = CopyTest.CopyConstructorString
 [----------] Global test environment set-up.
 [----------] 1 test from CopyTest
 [ RUN      ] CopyTest.CopyConstructorString
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Copy Constructor activated
-Destructor
-Destructor
 [       OK ] CopyTest.CopyConstructorString (0 ms)
 [----------] 1 test from CopyTest (0 ms total)
 
@@ -420,7 +347,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"CopyTest.CopyConstructorString" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"CopyTest.CopyConstructorString" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "CopyTest.CopyConstructorString" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -428,7 +355,7 @@ Test Passed.
 14/25 Test: AssigmentTest.MoveCopyAssigment
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=AssigmentTest.MoveCopyAssigment" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"AssigmentTest.MoveCopyAssigment" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"AssigmentTest.MoveCopyAssigment" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -437,32 +364,6 @@ Note: Google Test filter = AssigmentTest.MoveCopyAssigment
 [----------] Global test environment set-up.
 [----------] 1 test from AssigmentTest
 [ RUN      ] AssigmentTest.MoveCopyAssigment
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Copy Constructor activated
-Move Constructor activated
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Copy Constructor activated
-Move Constructor activated
-Destructor
-Destructor
-Destructor
-Destructor
-Destructor
-Destructor
 [       OK ] AssigmentTest.MoveCopyAssigment (0 ms)
 [----------] 1 test from AssigmentTest (0 ms total)
 
@@ -473,7 +374,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"AssigmentTest.MoveCopyAssigment" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"AssigmentTest.MoveCopyAssigment" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "AssigmentTest.MoveCopyAssigment" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -481,7 +382,7 @@ Test Passed.
 15/25 Test: SubscriptOperatorTest.ReturnNonConstInt
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=SubscriptOperatorTest.ReturnNonConstInt" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"SubscriptOperatorTest.ReturnNonConstInt" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnNonConstInt" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -490,15 +391,6 @@ Note: Google Test filter = SubscriptOperatorTest.ReturnNonConstInt
 [----------] Global test environment set-up.
 [----------] 1 test from SubscriptOperatorTest
 [ RUN      ] SubscriptOperatorTest.ReturnNonConstInt
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] SubscriptOperatorTest.ReturnNonConstInt (0 ms)
 [----------] 1 test from SubscriptOperatorTest (0 ms total)
 
@@ -509,7 +401,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"SubscriptOperatorTest.ReturnNonConstInt" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnNonConstInt" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "SubscriptOperatorTest.ReturnNonConstInt" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -517,7 +409,7 @@ Test Passed.
 16/25 Test: SubscriptOperatorTest.ReturnNonConstString
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=SubscriptOperatorTest.ReturnNonConstString" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"SubscriptOperatorTest.ReturnNonConstString" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnNonConstString" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -526,15 +418,6 @@ Note: Google Test filter = SubscriptOperatorTest.ReturnNonConstString
 [----------] Global test environment set-up.
 [----------] 1 test from SubscriptOperatorTest
 [ RUN      ] SubscriptOperatorTest.ReturnNonConstString
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] SubscriptOperatorTest.ReturnNonConstString (0 ms)
 [----------] 1 test from SubscriptOperatorTest (0 ms total)
 
@@ -545,7 +428,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"SubscriptOperatorTest.ReturnNonConstString" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnNonConstString" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "SubscriptOperatorTest.ReturnNonConstString" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -553,7 +436,7 @@ Test Passed.
 17/25 Test: SubscriptOperatorTest.ReturnConstInt
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=SubscriptOperatorTest.ReturnConstInt" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"SubscriptOperatorTest.ReturnConstInt" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnConstInt" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -562,17 +445,6 @@ Note: Google Test filter = SubscriptOperatorTest.ReturnConstInt
 [----------] Global test environment set-up.
 [----------] 1 test from SubscriptOperatorTest
 [ RUN      ] SubscriptOperatorTest.ReturnConstInt
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Move Constructor activated
-Destructor
-Destructor
 [       OK ] SubscriptOperatorTest.ReturnConstInt (0 ms)
 [----------] 1 test from SubscriptOperatorTest (0 ms total)
 
@@ -583,7 +455,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"SubscriptOperatorTest.ReturnConstInt" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnConstInt" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "SubscriptOperatorTest.ReturnConstInt" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -591,7 +463,7 @@ Test Passed.
 18/25 Test: SubscriptOperatorTest.ReturnConstString
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=SubscriptOperatorTest.ReturnConstString" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"SubscriptOperatorTest.ReturnConstString" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnConstString" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -600,17 +472,6 @@ Note: Google Test filter = SubscriptOperatorTest.ReturnConstString
 [----------] Global test environment set-up.
 [----------] 1 test from SubscriptOperatorTest
 [ RUN      ] SubscriptOperatorTest.ReturnConstString
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Move Constructor activated
-Destructor
-Destructor
 [       OK ] SubscriptOperatorTest.ReturnConstString (0 ms)
 [----------] 1 test from SubscriptOperatorTest (0 ms total)
 
@@ -621,7 +482,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"SubscriptOperatorTest.ReturnConstString" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"SubscriptOperatorTest.ReturnConstString" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "SubscriptOperatorTest.ReturnConstString" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -629,7 +490,7 @@ Test Passed.
 19/25 Test: RemoveTest.RemoveInt
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=RemoveTest.RemoveInt" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"RemoveTest.RemoveInt" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"RemoveTest.RemoveInt" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -638,15 +499,6 @@ Note: Google Test filter = RemoveTest.RemoveInt
 [----------] Global test environment set-up.
 [----------] 1 test from RemoveTest
 [ RUN      ] RemoveTest.RemoveInt
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] RemoveTest.RemoveInt (0 ms)
 [----------] 1 test from RemoveTest (0 ms total)
 
@@ -657,7 +509,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"RemoveTest.RemoveInt" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"RemoveTest.RemoveInt" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "RemoveTest.RemoveInt" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -665,7 +517,7 @@ Test Passed.
 20/25 Test: RemoveTest.RemoveString
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=RemoveTest.RemoveString" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"RemoveTest.RemoveString" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"RemoveTest.RemoveString" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -674,15 +526,6 @@ Note: Google Test filter = RemoveTest.RemoveString
 [----------] Global test environment set-up.
 [----------] 1 test from RemoveTest
 [ RUN      ] RemoveTest.RemoveString
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] RemoveTest.RemoveString (0 ms)
 [----------] 1 test from RemoveTest (0 ms total)
 
@@ -693,7 +536,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"RemoveTest.RemoveString" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"RemoveTest.RemoveString" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "RemoveTest.RemoveString" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -701,7 +544,7 @@ Test Passed.
 21/25 Test: RemoveTest.RemoveStringMiddle
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=RemoveTest.RemoveStringMiddle" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"RemoveTest.RemoveStringMiddle" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"RemoveTest.RemoveStringMiddle" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -710,15 +553,6 @@ Note: Google Test filter = RemoveTest.RemoveStringMiddle
 [----------] Global test environment set-up.
 [----------] 1 test from RemoveTest
 [ RUN      ] RemoveTest.RemoveStringMiddle
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] RemoveTest.RemoveStringMiddle (0 ms)
 [----------] 1 test from RemoveTest (0 ms total)
 
@@ -729,7 +563,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"RemoveTest.RemoveStringMiddle" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"RemoveTest.RemoveStringMiddle" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "RemoveTest.RemoveStringMiddle" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -737,7 +571,7 @@ Test Passed.
 22/25 Test: IteratorTest.BeginIterator
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=IteratorTest.BeginIterator" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"IteratorTest.BeginIterator" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.BeginIterator" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -746,15 +580,6 @@ Note: Google Test filter = IteratorTest.BeginIterator
 [----------] Global test environment set-up.
 [----------] 1 test from IteratorTest
 [ RUN      ] IteratorTest.BeginIterator
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] IteratorTest.BeginIterator (0 ms)
 [----------] 1 test from IteratorTest (0 ms total)
 
@@ -765,7 +590,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"IteratorTest.BeginIterator" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.BeginIterator" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "IteratorTest.BeginIterator" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -773,7 +598,7 @@ Test Passed.
 23/25 Test: IteratorTest.ReverseIterator
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=IteratorTest.ReverseIterator" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"IteratorTest.ReverseIterator" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.ReverseIterator" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -782,15 +607,6 @@ Note: Google Test filter = IteratorTest.ReverseIterator
 [----------] Global test environment set-up.
 [----------] 1 test from IteratorTest
 [ RUN      ] IteratorTest.ReverseIterator
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Destructor
 [       OK ] IteratorTest.ReverseIterator (0 ms)
 [----------] 1 test from IteratorTest (0 ms total)
 
@@ -801,7 +617,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"IteratorTest.ReverseIterator" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.ReverseIterator" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "IteratorTest.ReverseIterator" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -809,7 +625,7 @@ Test Passed.
 24/25 Test: IteratorTest.BeginConstIterator
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=IteratorTest.BeginConstIterator" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"IteratorTest.BeginConstIterator" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.BeginConstIterator" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -818,17 +634,6 @@ Note: Google Test filter = IteratorTest.BeginConstIterator
 [----------] Global test environment set-up.
 [----------] 1 test from IteratorTest
 [ RUN      ] IteratorTest.BeginConstIterator
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Copy Constructor activated
-Destructor
-Destructor
 [       OK ] IteratorTest.BeginConstIterator (0 ms)
 [----------] 1 test from IteratorTest (0 ms total)
 
@@ -839,7 +644,7 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"IteratorTest.BeginConstIterator" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.BeginConstIterator" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "IteratorTest.BeginConstIterator" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -847,7 +652,7 @@ Test Passed.
 25/25 Test: IteratorTest.ReverseConstIterator
 Command: "E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe" "--gtest_filter=IteratorTest.ReverseConstIterator" "--gtest_also_run_disabled_tests"
 Directory: E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build
-"IteratorTest.ReverseConstIterator" start time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.ReverseConstIterator" start time: Nov 04 16:48 RTZ 2 (çèìà)
 Output:
 ----------------------------------------------------------
 Running main() from E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc
@@ -856,17 +661,6 @@ Note: Google Test filter = IteratorTest.ReverseConstIterator
 [----------] Global test environment set-up.
 [----------] 1 test from IteratorTest
 [ RUN      ] IteratorTest.ReverseConstIterator
-Increasing capacity
-Move Constructor activated
-Increased capacity from 5 to 8
-Destructor
-Increasing capacity
-Move Constructor activated
-Increased capacity from 8 to 12
-Destructor
-Copy Constructor activated
-Destructor
-Destructor
 [       OK ] IteratorTest.ReverseConstIterator (0 ms)
 [----------] 1 test from IteratorTest (0 ms total)
 
@@ -877,8 +671,8 @@ Destructor
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"IteratorTest.ReverseConstIterator" end time: Nov 01 13:03 RTZ 2 (çèìà)
+"IteratorTest.ReverseConstIterator" end time: Nov 04 16:48 RTZ 2 (çèìà)
 "IteratorTest.ReverseConstIterator" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Nov 01 13:03 RTZ 2 (çèìà)
+End testing: Nov 04 16:48 RTZ 2 (çèìà)

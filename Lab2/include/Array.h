@@ -8,33 +8,37 @@
 template <typename T>
 class Array final
 {   
-    private:
+private:
     int capacity = 8;
     int length = 0;
     T* arr;
     
+    void set(int index, T&& value)
+    {
+        std::construct_at(&arr[index], value);
+    }
+    
+    void set(int index, const T& value)
+    {
+        std::construct_at(&arr[index], value);
+    }
+    
     // increases capacity
     void increaseCap()
     {
-        std::cout << "Increasing capacity" << std::endl;
-        Array<T> temp = std::move(*this);
-        capacity = temp.capacity * 1.6;
-        length = temp.length;
+        T* temp = std::move(arr);
+        capacity *= 1.6;
         arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
-
-        Iterator iter = iterator();
-        Iterator tIter = temp.iterator();
-        while(iter.hasNext())
-        {   
-            iter.set(tIter.get());
-            iter.next();
-            tIter.next();
+        
+        for(int i = 0; i < length; i++)
+        {
+            set(i, std::move(temp[i]));
         }
-        iter.set(tIter.get());
-        std::cout << "Increased capacity from " << temp.capacity << " to " << capacity << std::endl;
     }
     
-    public:
+    
+    
+public:
     Array()
     {
         arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
@@ -49,30 +53,27 @@ class Array final
     Array(const Array& obj)
         : capacity(obj.capacity), length(obj.length)
     {
-        std::cout << "Copy Constructor activated" << std::endl;
         arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
         
         for(int i = 0; i < length; i++)
         {
-            // arr[i] = obj.arr[i];
-            new(&arr[i]) T(obj.arr[i]);
+            std::construct_at(&arr[i], obj.arr[i]);
         }
     }
+    
     // move constructor
     Array(Array&& obj) noexcept
         : capacity(std::exchange(obj.capacity, 0)), length(std::exchange(obj.length, 0)), arr(std::exchange(obj.arr, nullptr))
     {
-        std::cout << "Move Constructor activated" << std::endl;
     }
     
     ~Array()
     {
-        std::cout<<"Destructor\n";
         if (arr != nullptr)
         {
             for(int i = 0; i < length; i++)
             {
-                arr[i].~T();
+                std::destroy_at(&arr[i]);
             }
             std::free(arr);
         }
@@ -83,7 +84,6 @@ class Array final
     {
         if (this != obj)
         {
-            std::cout << "Copy-and-Swap Assignment activated" << std::endl;
             std::swap(capacity, obj.capacity);
             std::swap(length, obj.length);
             std::swap(arr, obj.arr);
@@ -95,6 +95,7 @@ class Array final
     {
         return arr[index];
     }
+    
     T& operator[](int index)
     {
         return arr[index];
@@ -104,10 +105,12 @@ class Array final
     {
         return length;
     }
+    
     inline int getCapacity() const
     {
         return capacity;
     }
+    
     inline T* getArr() const
     {
         return arr;
@@ -121,7 +124,8 @@ class Array final
             increaseCap();
         }
         
-        new(&arr[length]) T(value);
+        set(length, value);
+        
         length++;
         return length-1;
     }
@@ -134,15 +138,13 @@ class Array final
         }
         length++;
         
-        Iterator iter = reverseIterator();
-        Iterator tIter = reverseIterator();
-        tIter.prev();
-        for(int i = length; i > index; i--, iter.prev(), tIter.prev())
+        for(int i = length-1; i > index; i--)
         {
-            iter.set(tIter.get());
+            set(i, std::move(arr[i-1]));
         }
-        // insert
-        iter.set(value);
+        std::destroy_at(&arr[index]);
+        set(index, value);
+        
         return index;
     }
     
@@ -150,21 +152,11 @@ class Array final
     {
         if(length == 0)
             return;
-        Iterator iter = iterator();
-        Iterator nIter = iterator();
-        nIter.next();
-        while(nIter.hasNext() && iter.get() != arr[index])
+        for(int i = index; i<length-1; i++)
         {
-            iter.next();
-            nIter.next();
+            set(i, std::move(arr[i+1]));
         }
-        while(nIter.hasNext())
-        {
-            iter.set(nIter.get());
-            iter.next();
-            nIter.next();
-        }
-        iter.set(T());
+        std::destroy_at(&arr[length-1]);
         length--;
     }
     
@@ -185,39 +177,43 @@ class Array final
     
     class Iterator
     {
-        private:
+    private:
         Array<T>& parent;
         int index;
         
-        public:
+    public:
         Iterator(Array<T>& p, int i) : parent(p), index(i){}
+        
         const T& get() const
         {
             return parent.arr[index];
         }
+        
+        void set(T&& value)
+        {
+            parent.set(index, value);
+        }
+        
         void set(const T& value)
         {
-            if constexpr(std::is_move_constructible_v<T>)
-            {
-                new(&parent.arr[index]) T(std::move(value));
-            }
-            else
-            {
-                new(&parent.arr[index]) T(value);
-            }
+            parent.set(index, value);
         }
+        
         void next()
         {
             index++;
         }
+        
         void prev()
         {
             index--;
         }
+        
         bool hasNext() const
         {
             return index+1 < parent.length;
         }
+        
         bool hasPrev() const
         {
             return index-1 >= 0;
@@ -225,28 +221,32 @@ class Array final
     };
     class ConstIterator
     {
-        private:
+    private:
         const Array<T>& parent;
         int index;
         
-        public:
+    public:
         ConstIterator(const Array<T>& p, int i) : parent(p), index(i){}
         const T& get() const
         {
             return parent.arr[index];
         }
+        
         void next()
         {
             index++;
         }
+        
         void prev()
         {
             index--;
         }
+        
         bool hasNext() const
         {
             return index+1 < parent.length;
         }
+        
         bool hasPrev() const
         {
             return index-1 >= 0;
@@ -257,6 +257,7 @@ class Array final
     {
         return Iterator(*this, 0);
     }
+    
     ConstIterator iterator() const
     {
         return ConstIterator(*this, 0);
@@ -266,6 +267,7 @@ class Array final
     {
         return Iterator(*this, length-1);
     }
+    
     ConstIterator reverseIterator() const
     {
         return ConstIterator(*this, length-1);

@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_gTest: phony || cmake_object_order_depen
 build CMakeFiles/gTest.dir/gTest.cpp.obj: CXX_COMPILER__gTest_unscanned_Debug E$:/1/Creativity/Projects/C++/gameAlgs/Lab2/gTest.cpp || cmake_object_order_depends_target_gTest
   CONFIG = Debug
   DEP_FILE = CMakeFiles\gTest.dir\gTest.cpp.obj.d
-  FLAGS = -g -O0 -Wall -Wextra -g -std=gnu++17
+  FLAGS = -g -g -O0  -std=gnu++20
   INCLUDES = -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/include -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest
   OBJECT_DIR = CMakeFiles\gTest.dir
   OBJECT_FILE_DIR = CMakeFiles\gTest.dir
@@ -67,7 +67,7 @@ build CMakeFiles/gTest.dir/gTest.cpp.obj: CXX_COMPILER__gTest_unscanned_Debug E$
 
 build gTest.exe gTest[1]_tests.cmake | ${cmake_ninja_workdir}gTest[1]_tests.cmake: CXX_EXECUTABLE_LINKER__gTest_Debug CMakeFiles/gTest.dir/gTest.cpp.obj | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
   CONFIG = Debug
-  FLAGS = -g -O0 -Wall -Wextra -g
+  FLAGS = -g -g -O0
   LINK_LIBRARIES = lib/libgtest_main.a  lib/libgtest.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\gTest.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\1\Creativity\Projects\C++\gameAlgs\Lab2\build && E:\Programs\mingw64\bin\cmake.exe -D TEST_TARGET=gTest -D TEST_EXECUTABLE=E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest.exe -D TEST_EXECUTOR= -D TEST_WORKING_DIR=E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=gTest_TESTS -D CTEST_FILE=E:/1/Creativity/Projects/C++/gameAlgs/Lab2/build/gTest[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_DISCOVERY_EXTRA_ARGS= -D TEST_XML_OUTPUT_DIR= -P E:/Programs/mingw64/share/cmake-4.1/Modules/GoogleTestAddTests.cmake"
@@ -253,7 +253,7 @@ build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depen
 build googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj: CXX_COMPILER__gmock_unscanned_Debug E$:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
   CONFIG = Debug
   DEP_FILE = googletest\googlemock\CMakeFiles\gmock.dir\src\gmock-all.cc.obj.d
-  FLAGS = -g -O0 -Wall -Wextra -g -std=c++17 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -g -O0  -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -IE:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googlemock/include -IE:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googlemock -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/include -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest
   OBJECT_DIR = googletest\googlemock\CMakeFiles\gmock.dir
   OBJECT_FILE_DIR = googletest\googlemock\CMakeFiles\gmock.dir\src
@@ -268,7 +268,7 @@ build googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj: CXX_COMPI
 
 build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj || lib/libgtest.a
   CONFIG = Debug
-  LANGUAGE_COMPILE_FLAGS = -g -O0 -Wall -Wextra -g
+  LANGUAGE_COMPILE_FLAGS = -g -g -O0
   OBJECT_DIR = googletest\googlemock\CMakeFiles\gmock.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -287,7 +287,7 @@ build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_
 build googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj: CXX_COMPILER__gmock_main_unscanned_Debug E$:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
   CONFIG = Debug
   DEP_FILE = googletest\googlemock\CMakeFiles\gmock_main.dir\src\gmock_main.cc.obj.d
-  FLAGS = -g -O0 -Wall -Wextra -g -std=c++17 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -g -O0  -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googlemock/include -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googlemock -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/include -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest
   OBJECT_DIR = googletest\googlemock\CMakeFiles\gmock_main.dir
   OBJECT_FILE_DIR = googletest\googlemock\CMakeFiles\gmock_main.dir\src
@@ -302,7 +302,7 @@ build googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj: CXX
 
 build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj || lib/libgmock.a lib/libgtest.a
   CONFIG = Debug
-  LANGUAGE_COMPILE_FLAGS = -g -O0 -Wall -Wextra -g
+  LANGUAGE_COMPILE_FLAGS = -g -g -O0
   OBJECT_DIR = googletest\googlemock\CMakeFiles\gmock_main.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -403,7 +403,7 @@ build cmake_object_order_depends_target_gtest: phony || .
 build googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: CXX_COMPILER__gtest_unscanned_Debug E$:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
   CONFIG = Debug
   DEP_FILE = googletest\googletest\CMakeFiles\gtest.dir\src\gtest-all.cc.obj.d
-  FLAGS = -g -O0 -Wall -Wextra -g -std=c++17 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -g -O0  -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -IE:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/include -IE:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest
   OBJECT_DIR = googletest\googletest\CMakeFiles\gtest.dir
   OBJECT_FILE_DIR = googletest\googletest\CMakeFiles\gtest.dir\src
@@ -418,7 +418,7 @@ build googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: CXX_COMPI
 
 build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj
   CONFIG = Debug
-  LANGUAGE_COMPILE_FLAGS = -g -O0 -Wall -Wextra -g
+  LANGUAGE_COMPILE_FLAGS = -g -g -O0
   OBJECT_DIR = googletest\googletest\CMakeFiles\gtest.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -437,7 +437,7 @@ build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_
 build googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj: CXX_COMPILER__gtest_main_unscanned_Debug E$:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
   CONFIG = Debug
   DEP_FILE = googletest\googletest\CMakeFiles\gtest_main.dir\src\gtest_main.cc.obj.d
-  FLAGS = -g -O0 -Wall -Wextra -g -std=c++17 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  FLAGS = -g -g -O0  -std=c++20 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
   INCLUDES = -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest/include -isystem E:/1/Creativity/Projects/C++/gameAlgs/Lab2/googletest/googletest
   OBJECT_DIR = googletest\googletest\CMakeFiles\gtest_main.dir
   OBJECT_FILE_DIR = googletest\googletest\CMakeFiles\gtest_main.dir\src
@@ -452,7 +452,7 @@ build googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj: CXX
 
 build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj || lib/libgtest.a
   CONFIG = Debug
-  LANGUAGE_COMPILE_FLAGS = -g -O0 -Wall -Wextra -g
+  LANGUAGE_COMPILE_FLAGS = -g -g -O0
   OBJECT_DIR = googletest\googletest\CMakeFiles\gtest_main.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

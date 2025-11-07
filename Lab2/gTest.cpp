@@ -261,37 +261,3 @@ TEST(IteratorTest, ReverseConstIterator)
   EXPECT_EQ(iter.get(), 9);
   EXPECT_FALSE(iter.hasNext());
 }
-
-// TEST(InsertTest, InsertAfterAssigment)
-// {
-//   Array<std::string> a(5);
-//   for(int i = 0; i < 9; i++)
-//     a.insert(std::to_string(i+1));
-//   Array<std::string> b = a;
-//   a.insert("aa");
-//   EXPECT_EQ(a[9], "aa");
-//   b.insert("bb");
-//   EXPECT_EQ(b[9], "bb");
-//   Array<std::string> c = std::move(a);
-//   c.insert("cc");
-//   EXPECT_EQ(c[9], "aa");
-//   EXPECT_EQ(c[10], "cc");
-// }
-
-// TEST(RemoveTest, RemoveAfterAssigment)
-// {
-//   Array<std::string> a(5);
-//   for(int i = 0; i < 9; i++)
-//     a.insert(std::to_string(i+1));
-//   Array<std::string> b = a;
-//   a.remove(4);
-//   EXPECT_EQ(a[4], "6");
-//   b.remove(0);
-//   EXPECT_EQ(b[0], "2");
-//   Array<std::string> c = std::move(a);
-//   c.remove(6);
-//   EXPECT_EQ(c[6], "9");
-// }
-
-//iter + const
-//reverse iter + const
