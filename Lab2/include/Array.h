@@ -15,25 +15,27 @@ private:
     
     void set(int index, T&& value)
     {
-        std::construct_at(&arr[index], value);
+        new(&arr[index]) T(value);
     }
     
     void set(int index, const T& value)
     {
-        std::construct_at(&arr[index], value);
+        new(&arr[index]) T(value);
     }
     
     // increases capacity
     void increaseCap()
     {
-        T* temp = std::move(arr);
         capacity *= 1.6;
+        T* temp = arr;
         arr = static_cast<T*>(std::malloc(sizeof(T) * capacity));
         
         for(int i = 0; i < length; i++)
         {
             set(i, std::move(temp[i]));
+            temp[i].~T();
         }
+        std::free(temp);
     }
     
     
@@ -124,7 +126,7 @@ public:
             increaseCap();
         }
         
-        set(length, value);
+        set(length, std::move(value));
         
         length++;
         return length-1;
@@ -141,8 +143,8 @@ public:
         for(int i = length-1; i > index; i--)
         {
             set(i, std::move(arr[i-1]));
+            arr[index].~T();
         }
-        std::destroy_at(&arr[index]);
         set(index, value);
         
         return index;
@@ -155,8 +157,8 @@ public:
         for(int i = index; i<length-1; i++)
         {
             set(i, std::move(arr[i+1]));
+            arr[index].~T();
         }
-        std::destroy_at(&arr[length-1]);
         length--;
     }
     

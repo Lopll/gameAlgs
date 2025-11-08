@@ -6,16 +6,14 @@ int main()
 {
     using namespace std;
     
-    Array<Array<int>> a(5);
-  for(int i = 0; i < 3; i++)
+    Array<string> a(5);
+  for(int i = 0; i < 9; i++)
   {
-    a.insert(Array<int>(i));
-  
-  // a.print();
+    a.insert("0");
+    a.print();
   }      
-  a.remove(1);
+  // a.remove(1);
   // a.print();
-  std::cout<<"EndRemove\n";
     return 0;
 }
 
