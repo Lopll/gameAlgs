@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <regex>
 #include <string>
@@ -65,7 +64,7 @@ int dice(std::string rollConfig)
 
 void check(std::string d, int maxRnd)
 {   
-    int n = 1000;
+    int n = 100000;
 
     int arr[maxRnd]{};
     for(int i = 0; i < n; i++)
@@ -86,10 +85,10 @@ void check(std::string d, int maxRnd)
 int main()
 {   
     check("1d6", 6);
-    check("2d6", 6);
-    check("3d6", 6);
+    check("2d6", 12);
+    check("3d6", 18);
     check("1d10", 10);
-    check("2d10", 10);
-    check("3d10", 10);
+    check("2d10", 20);
+    check("3d10", 30);
     return 0;
 }
