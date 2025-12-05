@@ -1,32 +1,57 @@
+// TODO: move semantic in insertion sort!
+
 #include <iostream>
+
+int INSERTION_THRESHOLD = 2;
 
 template<typename T>
 bool comp(const T &a, const T &b);
 
 template<typename T>
-void print(T *arr, int length)
+void print(T* first, T* last)
 {
-    for(int i = 0; i < length; i++)
+    for(T* i = first; i <= last; i++)
     {
-        std::cout << arr[i] << " ";
+        std::cout << *i << " ";
     }
     std::cout<<std::endl;
+}
+
+template<typename T>
+void swap(T* a, T* b) {
+    // std::cout << "SWAP: " << *a << " and " << *b << std::endl;
+    T temp = std::move(*a);
+    *a = std::move(*b);
+    *b = std::move(temp);
+}
+
+template<typename T, typename Compare>
+void insertionSort(T* first, T* last, Compare comp)
+{
+    
+    int len = last - first + 1;
+    // std::cout<<"Insertion sort for len = "<< len << std::endl;
+    if(len > 1)
+    {
+        for(int i = 1; i < len; i++)
+        {
+            T key = std::move(*(first+i));
+            int j = i-1;
+            while(j >= 0 && comp(key, *(first+j)))
+            {
+                *(first+j+1) = std::move(*(first+j));
+                j--;
+            }
+            *(first+j+1) = std::move(key);
+        }
+    }
 }
 
 template<typename T>
 T* med(T* first, T* last)
 {
     T* middle = first + (last - first) / 2;
-    
-    // std::cout << "First = " << first << std::endl;
-    // std::cout << "*First = " << *first << std::endl;
-    // std::cout << "Middle = " << middle << std::endl;
-    // std::cout << "*Middle = " << *middle << std::endl;
-    // std::cout << "Last = " << last << std::endl;
-    // std::cout << "*Last = " << *last << std::endl;
-    
     T a = *first, b = *middle, c = *last;
-    
     if ((a > b && a < c) || (a < b && a > c)) {
         return first;
     } else if ((b > a && b < c) || (b < a && b > c)) {
@@ -39,101 +64,60 @@ T* med(T* first, T* last)
 template<typename T, typename Compare>
 T* partition(T* first, T* last, Compare comp)
 {
-    if(last - first == 1)
-    {
-        if(comp(*last, *first))
-        {
-            T temp = std::move(*first);
-            *first = std::move(*last);
-            *last = std::move(temp);
-        }
-        return first;
-    }
-    
     T* pivot = med(first, last);
-    
-    // std::cout << "Pivot = " << pivot << std::endl;
-    // std::cout << "*Pivot = " << *pivot << std::endl << std::endl;
-    
-    T* i = first-1;
-    T* j = last+1;
-    while(true)
+    T* li = first;
+    T* ei = first;
+    T* gi = last;
+    // std::cout<<"-------"<<std::endl;
+    // std::cout<<*li<<std::endl;
+    // std::cout<<*gi<<std::endl;
+    // std::cout<<"-------"<<std::endl;
+    while(ei < gi)
     {
-        do
+        if (*ei != *pivot)
         {
-            i++;
+            if(comp(*ei, *pivot))
+            {
+                swap(ei, li);
+                ei++;
+                li++;
+            }
+            else// if(comp(*pivot, *ei))
+            {
+                swap(ei, gi);
+                gi--;
+            }
         }
-        while(comp(*i, *pivot) && *i != *pivot);
-        
-        do
+        else
         {
-            j--;
+            ei++;
         }
-        while(comp(*pivot, *j)  && *j != *pivot);
-        
-        if (i >= j)
-        {
-            return j;
-        }
-        // std::cout<<"SWAP: " << *i << " and " << *j << std::endl;
-        T temp = std::move(*i);
-        *i = std::move(*j);
-        *j = std::move(temp);
-    } 
+    }
+    // std::cout<<*li<<std::endl;
+    // std::cout<<*gi<<std::endl;
+    return li-first<last-gi? li : gi;
 }
 
 template<typename T, typename Compare>
 void sort(T* first, T* last, Compare comp)
 {
-    if (first < last)
+    while (last - first + 1 > INSERTION_THRESHOLD)
     {
-        T* p = partition(first, last, comp);//med(first,last);
-        print(first, p-first+1);
-    
-        sort(first, p, comp);
-        sort(p+1, last, comp);
+        T* p = partition(first, last, comp);
+        // print(first, last);
+        // std::cout<<*p<<std::endl;
+        int left = p - first;
+        int right = last - p;
+        if(left < right && left != 0)
+        {
+            sort(first, p, comp);
+            first = p + 1;
+        }
+        else //if (right != 0)
+        {
+            sort(p, last, comp);
+            last = p - 1;
+        }
     }
-
-    // std::cout << "Len = " << last - first << std::endl << std::endl;
-    // if(last - first <= 1) return;
-    // T *middle = first + (last - first)/2;
-    
-    // T *pivot;
-    // if((comp(*middle, *first) && !comp(*middle, *last)) || (comp(*middle, *first) && !comp(*middle, *last))) pivot = middle;
-    // if((comp(*first, *middle) && !comp(*first, *last)) || (comp(*first, *middle) && !comp(*first, *last))) pivot = first;
-    // if((comp(*last, *first) && !comp(*last, *middle)) || (comp(*last, *first) && !comp(*last, *middle))) pivot = last;
-    
-    // std::cout << "First = " << first << std::endl;
-    // std::cout << "*First = " << *first << std::endl;
-    // std::cout << "Middle = " << middle << std::endl;
-    // std::cout << "*Middle = " << *middle << std::endl;
-    // std::cout << "Last = " << last << std::endl;
-    // std::cout << "*Last = " << *last << std::endl;
-    // std::cout << "Pivot = " << pivot << std::endl;
-    // std::cout << "*Pivot = " << *pivot << std::endl << std::endl;
-    
-    // T *left = first;
-    // T *right = last;
-    // while(true)
-    // {
-    //     while (comp(*left, *pivot))
-    //     {
-    //         left++;
-    //     }
-    //     while (!comp(*right, *pivot))
-    //     {
-    //         right--;
-    //     }
-    //     if (left>=right) break;
-    //     std::swap(*left, *right);
-    //     // print(first, last-first+1);
-    // }
-    // // if(pivot-first < last-pivot)
-    // {
-    //     sort(first, pivot, comp);
-    // }
-    // // else
-    // {
-    //     sort(pivot+1, last, comp);
-    // }
+    insertionSort(first, last, comp);
 }
