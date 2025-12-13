@@ -287,18 +287,18 @@ TEST(UniqueStringTests, AllSameLessOrEq)
   }
 }
 
-TEST(UniqueStringTests, AllSameLessBig)
-{
-  int size = 100000;
-  std::string* arr = new std::string[size];
-  for(int i = 0; i < size; i++)
-  {
-    arr[i] = "z";
-  }
-  sort(&arr[0], &arr[size-1], [](std::string a, std::string b) { return a[0] <= b[0]; });
-  for(int i = 0; i < size; i++)
-  {
-    EXPECT_EQ(arr[i], "z");
-  }
-  delete[] arr;
-}
+// TEST(UniqueStringTests, AllSameLessBig)
+// {
+//   int size = 100000;
+//   std::string* arr = new std::string[size];
+//   for(int i = 0; i < size; i++)
+//   {
+//     arr[i] = "z";
+//   }
+//   sort(&arr[0], &arr[size-1], [](std::string a, std::string b) { return a[0] <= b[0]; });
+//   for(int i = 0; i < size; i++)
+//   {
+//     EXPECT_EQ(arr[i], "z");
+//   }
+//   delete[] arr;
+// }

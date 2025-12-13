@@ -1,8 +1,11 @@
-// TODO: move semantic in insertion sort!
-
 #include <iostream>
 
-int INSERTION_THRESHOLD = 2;
+int INSERTION_THRESHOLD = 32;
+
+void setInsertThreshold(int it)
+{
+    INSERTION_THRESHOLD = it;
+}
 
 template<typename T>
 bool comp(const T &a, const T &b);
@@ -19,7 +22,6 @@ void print(T* first, T* last)
 
 template<typename T>
 void swap(T* a, T* b) {
-    // std::cout << "SWAP: " << *a << " and " << *b << std::endl;
     T temp = std::move(*a);
     *a = std::move(*b);
     *b = std::move(temp);
@@ -28,22 +30,17 @@ void swap(T* a, T* b) {
 template<typename T, typename Compare>
 void insertionSort(T* first, T* last, Compare comp)
 {
-    
     int len = last - first + 1;
-    // std::cout<<"Insertion sort for len = "<< len << std::endl;
-    if(len > 1)
+    for(int i = 1; i < len; i++)
     {
-        for(int i = 1; i < len; i++)
+        T key = std::move(*(first+i));
+        int j = i-1;
+        while(j >= 0 && comp(key, *(first+j)))
         {
-            T key = std::move(*(first+i));
-            int j = i-1;
-            while(j >= 0 && comp(key, *(first+j)))
-            {
-                *(first+j+1) = std::move(*(first+j));
-                j--;
-            }
-            *(first+j+1) = std::move(key);
+            *(first+j+1) = std::move(*(first+j));
+            j--;
         }
+        *(first+j+1) = std::move(key);
     }
 }
 
@@ -68,44 +65,33 @@ T* partition(T* first, T* last, Compare comp)
     T* li = first;
     T* ei = first;
     T* gi = last;
-    // std::cout<<"-------"<<std::endl;
-    // std::cout<<*li<<std::endl;
-    // std::cout<<*gi<<std::endl;
-    // std::cout<<"-------"<<std::endl;
     while(ei < gi)
     {
-        if (*ei != *pivot)
+        if(comp(*ei, *pivot))
         {
-            if(comp(*ei, *pivot))
-            {
-                swap(ei, li);
-                ei++;
-                li++;
-            }
-            else// if(comp(*pivot, *ei))
-            {
-                swap(ei, gi);
-                gi--;
-            }
+            swap(ei, li);
+            ei++;
+            li++;
+        }
+        else if (comp(*pivot, *ei))
+        {
+            swap(ei, gi);
+            gi--;
         }
         else
         {
             ei++;
         }
     }
-    // std::cout<<*li<<std::endl;
-    // std::cout<<*gi<<std::endl;
     return li-first<last-gi? li : gi;
 }
 
 template<typename T, typename Compare>
 void sort(T* first, T* last, Compare comp)
 {
-    while (last - first + 1 > INSERTION_THRESHOLD)
+    while (last - first > INSERTION_THRESHOLD)
     {
         T* p = partition(first, last, comp);
-        // print(first, last);
-        // std::cout<<*p<<std::endl;
         int left = p - first;
         int right = last - p;
         if(left < right && left != 0)
@@ -113,7 +99,7 @@ void sort(T* first, T* last, Compare comp)
             sort(first, p, comp);
             first = p + 1;
         }
-        else //if (right != 0)
+        else
         {
             sort(p, last, comp);
             last = p - 1;
